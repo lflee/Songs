@@ -7,7 +7,7 @@
     <title>Songs</title>
 </head>
 <body>
-    <div>Log in with your Google account</div>
+    <div>Log in with your Google account to get personalized experiences</div>
 
     
     <!--Add buttons to initiate auth sequence and sign out-->
@@ -107,26 +107,31 @@
         /**
         * Print the names and majors of students in a sample spreadsheet:
         * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+        * https://docs.google.com/spreadsheets/d/1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes/edit Songs
         */
         function listMajors() {
-        gapi.client.sheets.spreadsheets.values.get({
-            spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-            range: 'Class Data!A2:E',
-        }).then(function(response) {
-            var range = response.result;
-            if (range.values.length > 0) {
-            appendPre('Name, Major:');
-            for (i = 0; i < range.values.length; i++) {
-                var row = range.values[i];
-                // Print columns A and E, which correspond to indices 0 and 4.
-                appendPre(row[0] + ', ' + row[4]);
-            }
-            } else {
-            appendPre('No data found.');
-            }
-        }, function(response) {
-            appendPre('Error: ' + response.result.error.message);
-        });
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
+                range: '峰!A2:D90',
+            }).then(function(response) {
+                var range = response.result;
+                if (range.values.length > 0) {
+                appendPre('Event, Songs, Score, Suggester');
+                for (i = 0; i < range.values.length; i++) {
+                    var row = range.values[i];
+                    // Print columns A and E, which correspond to indices 0 and 4.
+                    appendPre(row[0] + ', ' + row[4]);
+                }
+                } else {
+                appendPre('No data found.');
+                }
+            }, function(response) {
+                appendPre('Error: ' + response.result.error.message);
+            });
+        }
+
+        function findSongsSheet() {
+            
         }
 
     </script>
