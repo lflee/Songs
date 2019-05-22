@@ -14,7 +14,7 @@
     <button id="authorize_button" style="display: none;">Authorize</button>
     <button id="signout_button" style="display: none;">Sign Out</button>
 
-    <pre id="content" style="white-space: pre-wrap;"></pre>
+    <table id="content"></table>
 
 
     
@@ -59,7 +59,7 @@
             authorizeButton.onclick = handleAuthClick;
             signoutButton.onclick = handleSignoutClick;
         }, function(error) {
-            appendPre(JSON.stringify(error, null, 2));
+            appendTable(JSON.stringify(error, null, 2));
         });
         }
 
@@ -71,7 +71,7 @@
         if (isSignedIn) {
             authorizeButton.style.display = 'none';
             signoutButton.style.display = 'block';
-            listMajors();
+            ranASong();
         } else {
             authorizeButton.style.display = 'block';
             signoutButton.style.display = 'none';
@@ -93,15 +93,15 @@
         }
 
         /**
-        * Append a pre element to the body containing the given message
-        * as its text node. Used to display the results of the API call.
+        * Append a table element to the body containing the given message. 
+        * Used to display the results of the API call.
         *
-        * @param {string} message Text to be placed in pre element.
+        * @param {string} message Text to be placed in table element.
         */
-        function appendPre(message) {
-        var pre = document.getElementById('content');
+        function appendTable(message) {
+        var table = document.getElementById('content');
         var textContent = document.createTextNode(message + '\n');
-        pre.appendChild(textContent);
+        table.appendChild(textContent);
         }
 
         /**
@@ -109,7 +109,7 @@
         * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit Sheet of Google example
         * https://docs.google.com/spreadsheets/d/1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes/edit Songs
         */
-        function listMajors() {
+        function ranASong() {
             gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
                 // range: '峰!A2:D90',
@@ -117,18 +117,23 @@
                 
             }).then(function(response) {
                 var range = response.result;
+
+                // print number of results
+                var numOfResults = range.values.length ;
+                appendTable('Number of results is ' + numOfResults);
+
                 if (range.values.length > 0) {
-                appendPre('Event, Songs, Score, Suggester');
+                appendTable('<tr><th>Song</th><th>Score</th></tr>');
                 for (i = 0; i < range.values.length; i++) {
                     var row = range.values[i];
-                    // Print columns A and E, which correspond to indices 0 and 4.
-                    appendPre(row[0] + ', ' + row[1]);
+                    // Print columns A and B, which correspond to indices 0 and 1.
+                    appendTable('<tr><td>' + row[0] + '</td><td>' + row[1] + '</td></tr>');
                     }
                 } else {
-                appendPre('No data found.');
+                appendTable('No data found.');
                 }
             }, function(response) {
-                appendPre('Error: ' + response.result.error.message + "😛");
+                appendTable('Error: ' + response.result.error.message + "😛");
             });
         }
 
