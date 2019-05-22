@@ -11,18 +11,19 @@ html, body {
 #ran {
     width: 80vw;
     padding: 1em;
-    color: rgb(238, 241, 14);
+    color: white;
     font-size: xx-large;
-    -webkit-text-stroke: 0.1rem white;
+    -webkit-text-stroke: 0.05rem black;
     background: rgba(255, 255, 255, 0.2);
     font-family: 'Staatliches', cursive;
-    border: 0.5rem darkgreen;
+    border: 0.5em darkgreen;
 }
 
 .link {
     padding: 1em;
     font-size: x-large;
-    background: rgba(255, 255, 255, 0.1);
+    -webkit-text-stroke: 0.05rem black;
+    background: rgba(255, 255, 255, 0.2);
     font-family: 'Staatliches', cursive;
     border: 0.5rem darkgreen;
 }
