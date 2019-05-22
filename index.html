@@ -168,6 +168,8 @@
                 var linkElement = document.createElement("a");
                 linkElement.setAttribute("href", songData[1]);
                 linkElement.setAttribute("class", "link");
+                linkElement.setAttribute("target", "_blank");
+                linkElement.setAttribute("rel", "noopener");
                 var linkText = document.createTextNode(songData[0]);
                 linkElement.appendChild(linkText);
                 resultDot.appendChild(linkElement);
