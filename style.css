@@ -12,16 +12,20 @@ html, body {
     width: 80vw;
     height: 50vh;
     color: rgb(238, 241, 14);
+    font-size: x-large;
     -webkit-text-stroke: 0.05rem darkgreen;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
     font-family: 'Staatliches', cursive;
+    border: 0.5rem darkgreen;
 }
 
 .link {
     width: 60vw;
     height: 10vh;
-    background: rgba(255, 255, 255, 0.5);
+    font-size: large;
+    background: rgba(255, 255, 255, 0.1);
     font-family: 'Staatliches', cursive;
+    border: 0.5rem darkgreen;
 }
 
 #signout_button {
