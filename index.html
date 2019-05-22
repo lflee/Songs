@@ -162,12 +162,9 @@
 
                 var linkElement = document.createElement("a");
                 linkElement.setAttribute("href", songData[1]);
-                linkElement.setAttribute("id", "link");
+                var linkText = document.createTextNode(songData[0]);
+                linkElement.appendChild(linkText);
 
-
-                var songTextNode = document.createTextNode(songData[0]);
-                
-                document.getElementById('linkElement').appendChild(songTextNode);
                 document.getElementById("ranSong").appendChild(linkElement);
 
 

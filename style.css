@@ -9,6 +9,8 @@ html, body {
 }
 
 #ran {
+    width: 80vw;
+    height: 50vh;
     color: rgb(238, 241, 14);
     -webkit-text-stroke: 0.05rem darkgreen;
     background: rgba(255, 255, 255, 0.5);
