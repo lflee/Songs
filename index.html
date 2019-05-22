@@ -15,6 +15,7 @@
     <button id="signout_button" style="display: none;">Sign Out</button>
 
     <table id="content"></table>
+    <div id="ranSong"></div>
 
 
     
@@ -72,6 +73,7 @@
             authorizeButton.style.display = 'none';
             signoutButton.style.display = 'block';
             ranASong();
+            listLast15EventsSongs();
         } else {
             authorizeButton.style.display = 'block';
             signoutButton.style.display = 'none';
@@ -100,7 +102,7 @@
         */
         function appendTable(message) {
         var table = document.getElementById('content');
-//        var textContent = document.createTextNode(message);
+        var textContent = document.createTextNode(message);
         table.appendChild(message);
         }
 
@@ -109,7 +111,7 @@
         * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit Sheet of Google example
         * https://docs.google.com/spreadsheets/d/1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes/edit Songs
         */
-        function ranASong() {
+        function listLast15EventsSongs() {
             gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
                 // range: '峰!A2:D90',
@@ -137,8 +139,20 @@
             });
         }
 
-        function findSongsSheet() {
-            
+        function ranASong(){
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
+                range: 'ChosenByAnyOfUs Last 15 Events!A2:B50',
+            }).then(function(response) {
+                var range = response.result;
+
+                var songData = range.value[0];
+
+                var songTextNode = document.createTextNode("The random song is " + songData[0]);
+                
+                document.getElementById("ranSong").appendChild(songTextNode);
+
+            }
         }
 
     </script>
