@@ -160,14 +160,19 @@
                 var ranNumInRange =  Math.floor(Math.random() * Math.floor(range.values.length));
 
                 var songData = range.values[ranNumInRange];
+                
+                var resultDot = document.createElement("div");
+                resultDot.setAttribute("class", "link");
+
 
                 var linkElement = document.createElement("a");
                 linkElement.setAttribute("href", songData[1]);
                 linkElement.setAttribute("class", "link");
                 var linkText = document.createTextNode(songData[0]);
                 linkElement.appendChild(linkText);
+                resultDot.appendChild(linkElement);
 
-                document.getElementById("ranSong").appendChild(linkElement);
+                document.getElementById("ranSong").appendChild(resultDot);
 
 
 
