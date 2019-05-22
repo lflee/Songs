@@ -8,7 +8,8 @@ html, body {
 }
 
 h1 {
-    color: orange;
-    -webkit-text-stroke: 0.1rem blue;
-    background: rgba(255, 255, 255, 0.5)
+    color: rgb(238, 241, 14);
+    -webkit-text-stroke: 0.05rem darkgreen;
+    background: rgba(255, 255, 255, 0.5);
+    font-family: 'Staatliches', cursive;
 }
