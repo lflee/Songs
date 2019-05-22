@@ -11,7 +11,7 @@
 <body>
     <div id="intro">Log in with your Google account to get personalized experiences</div>
 
-    <button id="ran" style="display: none" onclick="ranASong()">Press to get a song played in last 15 events 🎲</button>
+    <div id="ran" style="display: none" onclick="ranASong()">Press to get a song played in last 15 events 🎲</div>
     
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
@@ -82,7 +82,7 @@
                 intro.style.display = 'none';
                 ran.style.display = 'block';
                 signoutButton.style.display = 'block';
-                ranASong();
+                // ranASong();
                 // listLast15EventsSongs();
             } else {
                 authorizeButton.style.display = 'block';
@@ -163,6 +163,8 @@
                 var songTextNode = document.createTextNode("The random song is " + songData[0] + ", (the index number is " + ranNumInRange + ")");
                 
                 document.getElementById("ranSong").appendChild(songTextNode);
+
+                
 
             }, function(response) {
                 console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
