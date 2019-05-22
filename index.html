@@ -146,7 +146,7 @@
             }).then(function(response) {
                 var range = response.result;
 
-                var songData = range.value[0];
+                var songData = range.values[0];
 
                 var songTextNode = document.createTextNode("The random song is " + songData[0]);
                 
