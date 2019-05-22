@@ -14,10 +14,13 @@
     
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
+    
+    <div id="ranSong"></div>
+
     <button id="signout_button" style="display: none;">Sign Out</button>
 
-    <table id="content"></table>
-    <div id="ranSong"></div>
+    <!-- <table id="content"></table> -->
+    
 
 
     
@@ -73,16 +76,17 @@
         *  appropriately. After a sign-in, the API is called.
         */
         function updateSigninStatus(isSignedIn) {
-        if (isSignedIn) {
-            authorizeButton.style.display = 'none';
-            intro.style.display = 'block';
-            signoutButton.style.display = 'block';
-            ranASong();
-            // listLast15EventsSongs();
-        } else {
-            authorizeButton.style.display = 'block';
-            signoutButton.style.display = 'none';
-        }
+            if (isSignedIn) {
+                authorizeButton.style.display = 'none';
+                intro.style.display = 'none';
+                ran.style.display = 'block';
+                signoutButton.style.display = 'block';
+                ranASong();
+                // listLast15EventsSongs();
+            } else {
+                authorizeButton.style.display = 'block';
+                signoutButton.style.display = 'none';
+            }
         }
 
         /**
