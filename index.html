@@ -161,11 +161,14 @@
                 var songData = range.values[ranNumInRange];
 
                 var linkElement = document.createElement("a");
-                
+                linkElement.setAttribute("href", songData[1]);
+                linkElement.setAttribute("id", "link");
 
-                var songTextNode = document.createTextNode("The random song is " + songData[0] + ", (the index number is " + ranNumInRange + ")");
+
+                var songTextNode = document.createTextNode(songData[0]);
                 
-                document.getElementById("ranSong").appendChild(songTextNode);
+                document.getElementById('linkElement').appendChild(songTextNode);
+                document.getElementById("ranSong").appendChild(linkElement);
 
 
 
