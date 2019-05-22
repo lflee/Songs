@@ -75,7 +75,7 @@
         function updateSigninStatus(isSignedIn) {
         if (isSignedIn) {
             authorizeButton.style.display = 'none';
-            intro.style.display = 'none';
+            intro.style.display = 'block';
             signoutButton.style.display = 'block';
             ranASong();
             // listLast15EventsSongs();
@@ -155,7 +155,7 @@
 
                 var songData = range.values[ranNumInRange];
 
-                var songTextNode = document.createTextNode("The random song is " + songData[0] + ", (the index number is " + ranNumInRange);
+                var songTextNode = document.createTextNode("The random song is " + songData[0] + ", (the index number is " + ranNumInRange + ")");
                 
                 document.getElementById("ranSong").appendChild(songTextNode);
 
