@@ -9,5 +9,5 @@ html, body {
 
 h1 {
     color: orange;
-    -webkit-text-stroke: 3px blue;
+    -webkit-text-stroke: 0.1rem blue;
 }
