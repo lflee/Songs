@@ -4,16 +4,17 @@ html, body {
     margin: auto;
     color: white;
     text-align: center;
+    vertical-align: middle;
 
 }
 
-h1 {
+#ran {
     color: rgb(238, 241, 14);
     -webkit-text-stroke: 0.05rem darkgreen;
     background: rgba(255, 255, 255, 0.5);
     font-family: 'Staatliches', cursive;
 }
 
-signout_button {
+#signout_button {
     position: fixed; bottom: 0;
 }
