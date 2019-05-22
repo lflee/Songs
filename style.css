@@ -1,5 +1,6 @@
 body {
     background-image: linear-gradient(to bottom right, black, darkblue, black);
+    height: 100%;
     margin: auto;
     color: white;
 
