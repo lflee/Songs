@@ -146,12 +146,16 @@
             }).then(function(response) {
                 var range = response.result;
 
-                var songData = range.values[0];
+                var ranNumInRange =  Math.floor(Math.random() * Math.floor(range.values.length));
 
-                var songTextNode = document.createTextNode("The random song is " + songData[0]);
+                var songData = range.values[ranNumInRange];
+
+                var songTextNode = document.createTextNode("The random song is " + songData[0] + ", (the index number is " + ranNumInRange);
                 
                 document.getElementById("ranSong").appendChild(songTextNode);
 
+            }, function(response) {
+                console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
             });
         }
 
