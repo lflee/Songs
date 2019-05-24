@@ -6,18 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Staatliches&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+HK&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <title>Songs 歌</title>
 </head>
 <body>
     <div id="intro">Log in with your Google account to get personalized experiences</div>
 
-    <div id="ran" style="display: none" onclick="ranASong()">Press to get a song played in last 15 events 🎲</div>
+    <div id="ran" style="display: none" onclick="ranASong()">Press to get a song played in last 15 events<br>
+    撳一撳 random 揀首歌<br>🎲
+    </div>
     
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
     
     <div id="ranSong"></div>
+    <div id="error" style="display: none;"></div>
 
     <button id="signout_button" style="display: none;">Sign Out</button>
 
@@ -180,7 +184,8 @@
 
 
             }, function(response) {
-                console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
+                document.getElementById("error").style.display = "block";
+                document.getElementById("error").setvalues('Error getting values from the sheet: ' + response.result.error.message + "😛");
             });
         }
 
