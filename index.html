@@ -182,9 +182,14 @@
 
                     document.getElementById("ranSong").appendChild(resultDot);
                 } ;
+
+                if(songData[0] == "" || songData[1] == ""){
+                    ranASong();
+                }
             }, function(response) {
                 document.getElementById("error").style.display = "block";
                 document.getElementById("error").setvalues('Error getting values from the sheet: ' + response.result.error.message + "😛");
+                console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
             });
         }
 
