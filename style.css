@@ -22,7 +22,7 @@ html, body {
 .link {
     padding: 1em;
     font-size: x-large;
-    -webkit-text-stroke: 0.05rem black;
+    -webkit-text-stroke: 0.05rem whitesmoke;
     background: rgba(255, 255, 255, 0.2);
     font-family: 'Staatliches', cursive;
     border: 0.5rem darkgreen;
