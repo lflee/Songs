@@ -17,19 +17,31 @@ html, body {
     background: rgba(255, 255, 255, 0.2);
     font-family: 'Staatliches', 'Noto Sans HK', cursive;
     border: 1em white;
+    border-width: 1em;
 }
 
 #ranSong {
     display: inline-grid ;
 }
 
+/* unvisited link */
+a:link {
+    color: white;
+}
+  
+/* visited link */
+a:visited {
+    color: white;
+}
+
 .link {
     padding: 1em;
     font-size: xx-large;
     -webkit-text-stroke: 0.05rem whitesmoke;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
     font-family: 'Staatliches', 'Noto Sans HK', cursive;
-    border: 0.5rem darkgreen;
+    border: darkgreen;
+    border-width: 1em;
 }
 
 #signout_button {
