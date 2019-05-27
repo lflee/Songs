@@ -16,14 +16,18 @@ html, body {
     -webkit-text-stroke: 0.05rem black;
     background: rgba(255, 255, 255, 0.2);
     font-family: 'Staatliches', 'Noto Sans HK', cursive;
-    border: 0.5em darkgreen;
+    border: 1em white;
+}
+
+#ranSong {
+    display: grid ;
 }
 
 .link {
     padding: 1em;
     font-size: xx-large;
     -webkit-text-stroke: 0.05rem whitesmoke;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.5);
     font-family: 'Staatliches', 'Noto Sans HK', cursive;
     border: 0.5rem darkgreen;
 }
