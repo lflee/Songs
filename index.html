@@ -156,7 +156,7 @@
         function ranASong(){
             gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
-                range: 'ChosenByAnyOfUs Last 15 Events!A2:B50',
+                range: 'ChosenByAnyOfUs Last 15 Events!B2:C200',
             }).then(function(response) {
                 var range = response.result;
 
@@ -164,7 +164,7 @@
 
                 var songData = range.values[ranNumInRange];
                 
-                if(songData[1] && songData[2]){
+                if(songData[0] && songData[1]){
                     var resultDot = document.createElement("div");
                     resultDot.setAttribute("class", "link");
 
