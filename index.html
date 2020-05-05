@@ -16,16 +16,22 @@
     <div id="ran" style="display: none" onclick="ranASong()">Press to get a song played in last 15 events<br>
     撳一撳 random 揀首歌<br>🎲
     </div>
+
+    <div id="ranSong"></div>
     
     <div id="ranFung" style="display: none" onclick="ranFungsSongs()">Press to get a song played in last 15 events<br>
         Random 一首峰揀過嘅歌<br>🎲
+    </div>
+
+    <div id="ranJulian" style="display: none" onclick="ranJuliansSongs()">
+        Random 一首 Julian 揀過嘅歌<br>🎲
     </div>
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
     
     <!-- <table id="content"></table> -->
-    <div id="ranSong"></div>
+
     <div id="error" style="display: none;"></div>
 
     <button id="signout_button" style="display: none;">Sign Out</button>
@@ -49,6 +55,7 @@
         var intro = document.getElementById('intro');
         var ran = document.getElementById('ran');
         var ranFung = document.getElementById('ranFung');
+        var ranJulian = document.getElementById('ranJulian');
 
         /**
         *  On load, called to load the auth2 library and API client library.
@@ -90,6 +97,7 @@
                 intro.style.display = 'none';
                 ran.style.display = 'inline-block';
                 ranFung.style.display = 'inline-block';
+                ranJulian.style.display = 'inline-block';
                 signoutButton.style.display = 'block';
                 // ranASong();
                 // listLast15EventsSongs();
@@ -195,14 +203,10 @@
             });
         }
 
-        function testFunction(){
-            console.log('testFunction() logged this.');
-        }
-
         function ranFungsSongs(){
             gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
-                range: '峰!B2:C91',
+                range: '峰!B2:D91',
             }).then(function(response) {
                 var range = response.result;
 
@@ -216,7 +220,7 @@
 
 
                     var linkElement = document.createElement("a");
-                    linkElement.setAttribute("href", songData[1]);
+                    linkElement.setAttribute("href", songData[2]);
                     linkElement.setAttribute("class", "link");
                     linkElement.setAttribute("target", "_blank");
                     linkElement.setAttribute("rel", "noopener");
@@ -227,6 +231,42 @@
                     document.getElementById("ranFung").appendChild(resultDot);
                 } else {
                     ranFungsSongs();
+                } ;
+            }, function(response) {
+                document.getElementById("error").style.display = "block";
+                document.getElementById("error").setvalues('Error getting values from the sheet: ' + response.result.error.message + "😛");
+                console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
+            });
+        }
+
+        function ranJuliansSongs(){
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
+                range: 'Julian!B2:D117',
+            }).then(function(response) {
+                var range = response.result;
+
+                var ranNumInRange =  Math.floor(Math.random() * Math.floor(range.values.length));
+
+                var songData = range.values[ranNumInRange];
+                
+                if(songData[0] && songData[1]){
+                    var resultDot = document.createElement("div");
+                    resultDot.setAttribute("class", "link");
+
+
+                    var linkElement = document.createElement("a");
+                    linkElement.setAttribute("href", songData[2]);
+                    linkElement.setAttribute("class", "link");
+                    linkElement.setAttribute("target", "_blank");
+                    linkElement.setAttribute("rel", "noopener");
+                    var linkText = document.createTextNode(songData[0]);
+                    linkElement.appendChild(linkText);
+                    resultDot.appendChild(linkElement);
+
+                    document.getElementById("ranJulian").appendChild(resultDot);
+                } else {
+                    ranJuliansSongs();
                 } ;
             }, function(response) {
                 document.getElementById("error").style.display = "block";
