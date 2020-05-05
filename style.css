@@ -20,6 +20,18 @@ html, body {
     border-width: 1em;
 }
 
+#ranFung {
+    width: 80vw;
+    padding: 1em;
+    color: white;
+    font-size: xx-large;
+    -webkit-text-stroke: 0.05rem black;
+    background: rgba(255, 255, 255, 0.2);
+    font-family: 'Staatliches', 'Noto Sans HK', cursive;
+    border: 1em white;
+    border-width: 1em;
+}
+
 #ranSong {
     display: inline-grid ;
 }
