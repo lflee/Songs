@@ -17,7 +17,7 @@
     撳一撳 random 揀首歌<br>🎲
     </div>
     
-    <div id="ranFung" style="display: none" onclick="ranFung()">Press to get a song played in last 15 events<br>
+    <div id="ranFung" style="display: none" onclick="testFunction()">Press to get a song played in last 15 events<br>
         Random 一首峰揀過嘅歌<br>🎲
     </div>
 
@@ -193,6 +193,10 @@
                 document.getElementById("error").setvalues('Error getting values from the sheet: ' + response.result.error.message + "😛");
                 console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
             });
+        }
+
+        function testFunction(){
+            console.log('testFunction() logged this.');
         }
 
         function ranFung(){
