@@ -13,8 +13,12 @@ var authorizeButton = document.getElementById('authorize_button');
 var signoutButton = document.getElementById('signout_button');
 var intro = document.getElementById('intro');
 var ran = document.getElementById('ran');
-var ranFung = document.getElementById('ranFung');
+var ranFung = document.getElementById('ranDan');
 var ranJulian = document.getElementById('ranJulian');
+var ranRicky = document.getElementById('ranRicky');
+var ranAndy = document.getElementById('ranAndy');
+var ranFung = document.getElementById('ranFung');
+
 
 /**
 *  On load, called to load the auth2 library and API client library.
@@ -55,8 +59,12 @@ function updateSigninStatus(isSignedIn) {
         authorizeButton.style.display = 'none';
         intro.style.display = 'none';
         ran.style.display = 'inline-block';
-        ranFung.style.display = 'inline-block';
+        ranDan.style.display = 'inline-block';
         ranJulian.style.display = 'inline-block';
+        ranRicky.style.display = 'inline-block';
+        ranAndy.style.display = 'inline-block';
+        ranFung.style.display = 'inline-block';
+        
         signoutButton.style.display = 'block';
         // ranASong();
         // listLast15EventsSongs();
@@ -129,7 +137,7 @@ function handleSignoutClick(event) {
 function ranASong(){
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
-        range: 'ChosenByAnyOfUs Last 15 Events!B2:C200',
+        range: 'Events!C2:D533',
     }).then(function(response) {
         var range = response.result;
 
@@ -151,7 +159,12 @@ function ranASong(){
             linkElement.appendChild(linkText);
             resultDot.appendChild(linkElement);
 
+            var dotID = "fung" + songData[0];
+            resultDot.setAttribute("id", dotID);
+            
             document.getElementById("ran").appendChild(resultDot);
+
+            document.getElementById(dotID).scrollIntoView();
         } else {
             ranASong();
         } ;
@@ -161,6 +174,86 @@ function ranASong(){
         console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
     });
 }
+
+function ranDansSongs(){
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
+        range: 'Danny!B2:D102',
+    }).then(function(response) {
+        var range = response.result;
+
+        var ranNumInRange =  Math.floor(Math.random() * Math.floor(range.values.length));
+
+        var songData = range.values[ranNumInRange];
+        
+        if(songData[0] && songData[2]){
+            var resultDot = document.createElement("div");
+            resultDot.setAttribute("class", "link");
+            var dotID = "dan" + songData[0];
+            resultDot.setAttribute("id", dotID);
+
+            var linkElement = document.createElement("a");
+            linkElement.setAttribute("href", songData[2]);
+            linkElement.setAttribute("class", "link");
+            linkElement.setAttribute("target", "_blank");
+            linkElement.setAttribute("rel", "noopener");
+            var linkText = document.createTextNode(songData[0]);
+            linkElement.appendChild(linkText);
+            resultDot.appendChild(linkElement);
+
+            document.getElementById("ranDan").appendChild(resultDot);
+            document.getElementById(dotID).scrollIntoView();
+        } else {
+            ranDansSongs();
+        } ;
+    }, function(response) {
+        document.getElementById("error").style.display = "block";
+        document.getElementById("error").setvalues('Error getting values from the sheet: ' + response.result.error.message + "😛");
+        console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
+    });
+}
+
+
+function ranJuliansSongs(){
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
+        range: 'Julian!B2:D117',
+    }).then(function(response) {
+        var range = response.result;
+
+        var ranNumInRange =  Math.floor(Math.random() * Math.floor(range.values.length));
+
+        var songData = range.values[ranNumInRange];
+        
+        if(songData[0] && songData[1]){
+            var resultDot = document.createElement("div");
+            resultDot.setAttribute("class", "link");
+            var dotID = "fung" + songData[0];
+            resultDot.setAttribute("id", dotID);
+
+            var linkElement = document.createElement("a");
+            linkElement.setAttribute("href", songData[2]);
+            linkElement.setAttribute("class", "link");
+            linkElement.setAttribute("target", "_blank");
+            linkElement.setAttribute("rel", "noopener");
+            var linkText = document.createTextNode(songData[0]);
+            linkElement.appendChild(linkText);
+            resultDot.appendChild(linkElement);
+
+            document.getElementById("ranJulian").appendChild(resultDot);
+            document.getElementById(dotID).scrollIntoView();
+        } else {
+            ranJuliansSongs();
+        } ;
+    }, function(response) {
+        document.getElementById("error").style.display = "block";
+        document.getElementById("error").setvalues('Error getting values from the sheet: ' + response.result.error.message + "😛");
+        console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
+    });
+}
+
+
+
 
 function ranFungsSongs(){
     gapi.client.sheets.spreadsheets.values.get({
@@ -201,41 +294,3 @@ function ranFungsSongs(){
         console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
     });
 }
-
-function ranJuliansSongs(){
-    gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
-        range: 'Julian!B2:D117',
-    }).then(function(response) {
-        var range = response.result;
-
-        var ranNumInRange =  Math.floor(Math.random() * Math.floor(range.values.length));
-
-        var songData = range.values[ranNumInRange];
-        
-        if(songData[0] && songData[1]){
-            var resultDot = document.createElement("div");
-            resultDot.setAttribute("class", "link");
-
-
-            var linkElement = document.createElement("a");
-            linkElement.setAttribute("href", songData[2]);
-            linkElement.setAttribute("class", "link");
-            linkElement.setAttribute("target", "_blank");
-            linkElement.setAttribute("rel", "noopener");
-            var linkText = document.createTextNode(songData[0]);
-            linkElement.appendChild(linkText);
-            resultDot.appendChild(linkElement);
-
-            document.getElementById("ranJulian").appendChild(resultDot);
-        } else {
-            ranJuliansSongs();
-        } ;
-    }, function(response) {
-        document.getElementById("error").style.display = "block";
-        document.getElementById("error").setvalues('Error getting values from the sheet: ' + response.result.error.message + "😛");
-        console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
-    });
-}
-
-
