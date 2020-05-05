@@ -316,7 +316,7 @@ function ranAndysSongs(){
             linkElement.appendChild(linkText);
             resultDot.appendChild(linkElement);
 
-            document.getElementById("ranJulian").appendChild(resultDot);
+            document.getElementById("ranAndy").appendChild(resultDot);
             document.getElementById(dotID).scrollIntoView();
         } else {
             ranAndysSongs();
