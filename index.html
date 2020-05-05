@@ -200,40 +200,39 @@
         }
 
         function ranFungsSongs(){
-            console.log('hello?');
-            // gapi.client.sheets.spreadsheets.values.get({
-            //     spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
-            //     range: '峰!B2:C91',
-            // }).then(function(response) {
-            //     var range = response.result;
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
+                range: '峰!B2:C91',
+            }).then(function(response) {
+                var range = response.result;
 
-            //     var ranNumInRange =  Math.floor(Math.random() * Math.floor(range.values.length));
+                var ranNumInRange =  Math.floor(Math.random() * Math.floor(range.values.length));
 
-            //     var songData = range.values[ranNumInRange];
+                var songData = range.values[ranNumInRange];
                 
-            //     if(songData[0] && songData[1]){
-            //         var resultDot = document.createElement("div");
-            //         resultDot.setAttribute("class", "link");
+                if(songData[0] && songData[1]){
+                    var resultDot = document.createElement("div");
+                    resultDot.setAttribute("class", "link");
 
 
-            //         var linkElement = document.createElement("a");
-            //         linkElement.setAttribute("href", songData[1]);
-            //         linkElement.setAttribute("class", "link");
-            //         linkElement.setAttribute("target", "_blank");
-            //         linkElement.setAttribute("rel", "noopener");
-            //         var linkText = document.createTextNode(songData[0]);
-            //         linkElement.appendChild(linkText);
-            //         resultDot.appendChild(linkElement);
+                    var linkElement = document.createElement("a");
+                    linkElement.setAttribute("href", songData[1]);
+                    linkElement.setAttribute("class", "link");
+                    linkElement.setAttribute("target", "_blank");
+                    linkElement.setAttribute("rel", "noopener");
+                    var linkText = document.createTextNode(songData[0]);
+                    linkElement.appendChild(linkText);
+                    resultDot.appendChild(linkElement);
 
-            //         document.getElementById("raFung").appendChild(resultDot);
-            //     } else {
-            //         ranFung();
-            //     } ;
-            // }, function(response) {
-            //     document.getElementById("error").style.display = "block";
-            //     document.getElementById("error").setvalues('Error getting values from the sheet: ' + response.result.error.message + "😛");
-            //     console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
-            // });
+                    document.getElementById("raFung").appendChild(resultDot);
+                } else {
+                    ranFung();
+                } ;
+            }, function(response) {
+                document.getElementById("error").style.display = "block";
+                document.getElementById("error").setvalues('Error getting values from the sheet: ' + response.result.error.message + "😛");
+                console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
+            });
         }
 
 
