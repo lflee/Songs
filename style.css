@@ -1,5 +1,5 @@
 html, body {
-    background-image: linear-gradient(to bottom right, black, darkblue, black);
+    background-image: linear-gradient(to bottom right, black, #000044, black);
     height: 100%;
     margin: auto;
     color: white;
@@ -8,7 +8,7 @@ html, body {
 
 }
 
-#ran {
+.ranDiv {
     width: 80vw;
     padding: 1em;
     color: white;
@@ -16,34 +16,7 @@ html, body {
     -webkit-text-stroke: 0.05rem black;
     background: rgba(255, 255, 255, 0.2);
     font-family: 'Staatliches', 'Noto Sans HK', cursive;
-    border: 1em white;
-    border-width: 1em;
-}
-
-#ranFung {
-    width: 80vw;
-    padding: 1em;
-    color: white;
-    font-size: xx-large;
-    -webkit-text-stroke: 0.05rem black;
-    background: rgba(255, 255, 255, 0.2);
-    font-family: 'Staatliches', 'Noto Sans HK', cursive;
-    border: ridge #aaaaff;   
-
-}
-
-#ranSong {
-    display: inline-grid ;
-}
-
-/* unvisited link */
-a:link {
-    color: white;
-}
-  
-/* visited link */
-a:visited {
-    color: white;
+    border: ridge #aaaaff; 
 }
 
 .link {
