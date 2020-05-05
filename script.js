@@ -225,10 +225,10 @@ function ranJuliansSongs(){
 
         var songData = range.values[ranNumInRange];
         
-        if(songData[0] && songData[1]){
+        if(songData[0] && songData[2]){
             var resultDot = document.createElement("div");
             resultDot.setAttribute("class", "link");
-            var dotID = "fung" + songData[0];
+            var dotID = "julian" + songData[0];
             resultDot.setAttribute("id", dotID);
 
             var linkElement = document.createElement("a");
@@ -252,8 +252,81 @@ function ranJuliansSongs(){
     });
 }
 
+function ranRickysSongs(){
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
+        range: 'Ricky!B2:D69',
+    }).then(function(response) {
+        var range = response.result;
 
+        var ranNumInRange =  Math.floor(Math.random() * Math.floor(range.values.length));
 
+        var songData = range.values[ranNumInRange];
+        
+        if(songData[0] && songData[2]){
+            var resultDot = document.createElement("div");
+            resultDot.setAttribute("class", "link");
+            var dotID = "ricky" + songData[0];
+            resultDot.setAttribute("id", dotID);
+
+            var linkElement = document.createElement("a");
+            linkElement.setAttribute("href", songData[2]);
+            linkElement.setAttribute("class", "link");
+            linkElement.setAttribute("target", "_blank");
+            linkElement.setAttribute("rel", "noopener");
+            var linkText = document.createTextNode(songData[0]);
+            linkElement.appendChild(linkText);
+            resultDot.appendChild(linkElement);
+
+            document.getElementById("ranRicky").appendChild(resultDot);
+            document.getElementById(dotID).scrollIntoView();
+        } else {
+            ranRickysSongs();
+        } ;
+    }, function(response) {
+        document.getElementById("error").style.display = "block";
+        document.getElementById("error").setvalues('Error getting values from the sheet: ' + response.result.error.message + "😛");
+        console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
+    });
+}
+
+function ranAndysSongs(){
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
+        range: 'Andy!B2:D75',
+    }).then(function(response) {
+        var range = response.result;
+
+        var ranNumInRange =  Math.floor(Math.random() * Math.floor(range.values.length));
+
+        var songData = range.values[ranNumInRange];
+        
+        if(songData[0] && songData[2]){
+            var resultDot = document.createElement("div");
+            resultDot.setAttribute("class", "link");
+            var dotID = "andy" + songData[0];
+            resultDot.setAttribute("id", dotID);
+
+            var linkElement = document.createElement("a");
+            linkElement.setAttribute("href", songData[2]);
+            linkElement.setAttribute("class", "link");
+            linkElement.setAttribute("target", "_blank");
+            linkElement.setAttribute("rel", "noopener");
+            var linkText = document.createTextNode(songData[0]);
+            linkElement.appendChild(linkText);
+            resultDot.appendChild(linkElement);
+
+            document.getElementById("ranJulian").appendChild(resultDot);
+            document.getElementById(dotID).scrollIntoView();
+        } else {
+            ranAndysSongs();
+        } ;
+    }, function(response) {
+        document.getElementById("error").style.display = "block";
+        document.getElementById("error").setvalues('Error getting values from the sheet: ' + response.result.error.message + "😛");
+        console.log('Error getting values from the sheet: ' + response.result.error.message + "😛");
+    });
+}
 
 function ranFungsSongs(){
     gapi.client.sheets.spreadsheets.values.get({
