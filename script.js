@@ -137,7 +137,7 @@ function handleSignoutClick(event) {
 function ranASong(){
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1rsTEXvPp8e9DYN1XQlwA0Ds8P3CRAYvQjerZdOLpfes',
-        range: 'Events!C2:D533',
+        range: 'Events!C:D',
     }).then(function(response) {
         var range = response.result;
 
